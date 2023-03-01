@@ -12,10 +12,11 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Optional;
 
-@RequiredArgsConstructor
+
 @Service
 public class AdministrationService{
 
+    @Autowired
     private AdministrationRepository administrationRepository;
 
     public Administration insert(Administration administration){

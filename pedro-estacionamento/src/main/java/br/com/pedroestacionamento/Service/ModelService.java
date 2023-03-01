@@ -11,10 +11,11 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Optional;
 
-@RequiredArgsConstructor
+
 @Service
 public class ModelService {
 
+    @Autowired
     private ModelRepository modelRepository;
 
     public Model insert(Model model){

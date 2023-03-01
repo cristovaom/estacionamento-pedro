@@ -5,15 +5,18 @@ import br.com.pedroestacionamento.Repository.VehicleRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @Service
-@RequiredArgsConstructor
 public class VehicleService {
 
+    @Autowired
     private VehicleRepository vehicleRepository;
 
     public Vehicle insert (Vehicle vehicle){
@@ -24,9 +27,9 @@ public class VehicleService {
         return this.vehicleRepository.findById(id);
     }
 
-    public ArrayList<Vehicle> findAll(){
+    public Page<Vehicle> findAll(Pageable pageable){
 
-        return (ArrayList<Vehicle>) this.vehicleRepository.findAll();
+        return this.vehicleRepository.findAll(pageable);
     }
 
     public Vehicle update (Vehicle vehicle){
@@ -39,7 +42,7 @@ public class VehicleService {
         this.vehicleRepository.deleteById(id);
     }
 
-    public ArrayList<Vehicle> findByPlate(String plate){
+    public Optional<Vehicle> findByPlate(String plate){
         return this.vehicleRepository.findByPlateContains(plate);
     }
 

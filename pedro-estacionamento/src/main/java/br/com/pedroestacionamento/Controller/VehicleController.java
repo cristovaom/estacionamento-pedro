@@ -3,9 +3,12 @@ package br.com.pedroestacionamento.Controller;
 import br.com.pedroestacionamento.Entity.Vehicle;
 import br.com.pedroestacionamento.Service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.ArrayList;
 
@@ -15,7 +18,8 @@ public class VehicleController {
     @Autowired
     private VehicleService vehicleService;
 
-    @GetMapping("{idVehicle}")
+
+    @GetMapping("/{idVehicle}")
     public ResponseEntity<Vehicle> findById(
             @PathVariable("idVehicle") Long idVehicle
     ) {
@@ -58,10 +62,15 @@ public class VehicleController {
         }
     }
 
-    @GetMapping("/filter")
-    public ArrayList<Vehicle> searchLicensePlate(
-            @RequestParam("plate") String plate
+    @GetMapping("/{getbyplate}")
+    public ResponseEntity<Vehicle> searchLicensePlate(
+            @PathVariable("getByPlate") String getByPlate
     ) {
-        return this.searchLicensePlate(plate);
+        return ResponseEntity.ok().body(this.vehicleService.findByPlate(getByPlate).get());
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<Vehicle>> findAll(Pageable pageable){
+        return ResponseEntity.ok().body(this.vehicleService.findAll(pageable));
     }
 }
