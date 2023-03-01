@@ -1,11 +1,15 @@
 package br.com.pedroestacionamento.Entity;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.math.BigDecimal;
 
+@Entity
+@NoArgsConstructor
 public class Config extends AbstractEntity{
 
 
@@ -38,8 +42,5 @@ public class Config extends AbstractEntity{
     @Setter
     @Column(name = "parkingLotsV",unique = false,nullable = false)
     private int vagasV;
-
-
-
 
 }
