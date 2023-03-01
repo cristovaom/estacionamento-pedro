@@ -30,15 +30,23 @@ public class VehicleService {
     }
 
     public Vehicle update (Vehicle vehicle){
+
         return saveTransactional(vehicle);
     }
 
     public void delete(Long id){
+
         this.vehicleRepository.deleteById(id);
     }
 
+    public ArrayList<Vehicle> findByPlate(String plate){
+        return this.vehicleRepository.findByPlateContains(plate);
+    }
+
+
     @Transactional
     private Vehicle saveTransactional(Vehicle vehicle){
+
         return this.vehicleRepository.save(vehicle);
     }
 
