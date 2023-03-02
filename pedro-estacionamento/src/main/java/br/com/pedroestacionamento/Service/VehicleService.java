@@ -1,5 +1,6 @@
 package br.com.pedroestacionamento.Service;
 
+import br.com.pedroestacionamento.Entity.Model;
 import br.com.pedroestacionamento.Entity.Vehicle;
 import br.com.pedroestacionamento.Repository.VehicleRepository;
 import jakarta.transaction.Transactional;
@@ -27,9 +28,9 @@ public class VehicleService {
         return this.vehicleRepository.findById(id);
     }
 
-    public Page<Vehicle> findAll(Pageable pageable){
+    public ArrayList<Vehicle> findAll(){
 
-        return this.vehicleRepository.findAll(pageable);
+        return (ArrayList<Vehicle>) this.vehicleRepository.findAll();
     }
 
     public Vehicle update (Vehicle vehicle){

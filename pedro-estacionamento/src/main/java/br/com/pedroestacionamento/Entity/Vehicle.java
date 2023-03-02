@@ -26,11 +26,9 @@ public class Vehicle extends AbstractEntity{
     @Column(name = "color",unique = false,nullable = false)
     private Color color;
 
-
     @Getter
     @Setter
     @Enumerated(EnumType.STRING)
     @Column(name = "category",unique = false,nullable = false)
     private Category category;
-
 }

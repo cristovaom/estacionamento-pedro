@@ -69,8 +69,13 @@ public class VehicleController {
         return ResponseEntity.ok().body(this.vehicleService.findByPlate(getByPlate).get());
     }
 
+
     @GetMapping
-    public ResponseEntity<Page<Vehicle>> findAll(Pageable pageable){
-        return ResponseEntity.ok().body(this.vehicleService.findAll(pageable));
+    public ResponseEntity<?> findAll() {
+        try {
+            return ResponseEntity.ok().body(this.vehicleService.findAll());
+        } catch (RuntimeException error){
+            return ResponseEntity.badRequest().body(error.getMessage());
+        }
     }
 }
