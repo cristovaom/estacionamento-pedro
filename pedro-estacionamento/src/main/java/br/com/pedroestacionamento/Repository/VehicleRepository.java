@@ -14,4 +14,7 @@ public interface VehicleRepository extends JpaRepository<Vehicle,Long> {
     @Query("select v from Vehicle v where v.plate = :plate")
     Optional<Vehicle> findByPlateContains(String plate);
 
+    @Query("select y from Vehicle y where y.year = :year")
+    Optional<Vehicle> findByYear(int year);
+
 }

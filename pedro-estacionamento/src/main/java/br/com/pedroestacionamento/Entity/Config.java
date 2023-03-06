@@ -12,7 +12,6 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 public class Config extends AbstractEntity{
 
-
     @Getter
     @Setter
     @Column(name = "key",unique = true,nullable = false)

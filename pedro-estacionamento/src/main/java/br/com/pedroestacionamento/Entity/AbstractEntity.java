@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.naming.Name;
+import java.time.LocalDateTime;
 
 @MappedSuperclass
 @NoArgsConstructor
@@ -18,7 +19,15 @@ public abstract class AbstractEntity {
     @Column(name = "id")
     private Long id;
 
-
-
-
+//    @Getter
+//    @Setter
+//    private LocalDateTime cadastro;
+//
+//    @Getter
+//    @Setter
+//    private LocalDateTime edicao;
+//
+//    @Getter
+//    @Setter
+//    private boolean ativo;
 }

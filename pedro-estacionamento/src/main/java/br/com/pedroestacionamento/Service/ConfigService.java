@@ -39,6 +39,8 @@ public class ConfigService {
         return (ArrayList<Config>) this.configRepository.findAll();
     }
 
+
+
     @Transactional
     public Config saveTransactional(Config config){
 

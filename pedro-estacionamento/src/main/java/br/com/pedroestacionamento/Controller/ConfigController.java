@@ -57,10 +57,10 @@ public class ConfigController {
     }
 
     @GetMapping
-    public ResponseEntity<?> findAll() {
-        try {
+    public ResponseEntity<?> findAll(){
+        try{
             return ResponseEntity.ok().body(this.configService.findAll());
-        } catch (RuntimeException error) {
+        }catch(RuntimeException error){
             return ResponseEntity.badRequest().body(error.getMessage());
         }
     }

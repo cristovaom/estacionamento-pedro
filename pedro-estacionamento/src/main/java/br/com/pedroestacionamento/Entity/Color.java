@@ -3,7 +3,7 @@ package br.com.pedroestacionamento.Entity;
 public enum Color {
     fantasy("fantasia"),
     blue("azul"),
-    black("preto"),
+    preto("preto"),
     white("branco"),
     red("vermelho"),
     silver("prata"),

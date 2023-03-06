@@ -44,7 +44,12 @@ public class VehicleService {
     }
 
     public Optional<Vehicle> findByPlate(String plate){
+
         return this.vehicleRepository.findByPlateContains(plate);
+    }
+
+    public Optional<Vehicle> findByYear(int year){
+        return this.vehicleRepository.findByYear(year);
     }
 
 

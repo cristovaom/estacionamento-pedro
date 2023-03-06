@@ -1,5 +1,6 @@
 package br.com.pedroestacionamento.Controller;
 
+import br.com.pedroestacionamento.Entity.Administration;
 import br.com.pedroestacionamento.Entity.Vehicle;
 import br.com.pedroestacionamento.Service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,10 @@ public class VehicleController {
     @Autowired
     private VehicleService vehicleService;
 
-
     @GetMapping("/{idVehicle}")
     public ResponseEntity<Vehicle> findById(
             @PathVariable("idVehicle") Long idVehicle
-    ) {
+    ){
         return ResponseEntity.ok().body(this.vehicleService.findByID(idVehicle).get());
     }
 
@@ -61,15 +61,18 @@ public class VehicleController {
             return ResponseEntity.badRequest().body(error.getMessage());
         }
     }
-
-    @GetMapping("/{getbyplate}")
+    @GetMapping("/getByPlate/{getByPlate}")
     public ResponseEntity<Vehicle> searchLicensePlate(
             @PathVariable("getByPlate") String getByPlate
-    ) {
+    ){
         return ResponseEntity.ok().body(this.vehicleService.findByPlate(getByPlate).get());
     }
-
-
+    @GetMapping("/getByYear/{getByYear}")
+    public ResponseEntity <Vehicle> searchByYear(
+            @PathVariable("getByYear") int getByYear
+    ){
+        return ResponseEntity.ok().body(this.vehicleService.findByYear(getByYear).get());
+    }
     @GetMapping
     public ResponseEntity<?> findAll() {
         try {
